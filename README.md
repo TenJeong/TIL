@@ -4,8 +4,6 @@
 >
 > 차곡차곡 쌓이면 언젠간 커질 거야
 
----
-
 ### Web
 
-- 모든 개발자를 위한 HTTP 웹 기본 지식
+- [모든 개발자를 위한 HTTP 웹 기본 지식](https://github.com/TenJeong/TIL/blob/39b8ea7a242af4176f21c6d80b9a08264c9ce6e8/Web/%EB%AA%A8%EB%93%A0%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20HTTP%20%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%20%EC%A7%80%EC%8B%9D.md)
