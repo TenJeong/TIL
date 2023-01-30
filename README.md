@@ -1,4 +1,4 @@
-## Today I Learned
+# Today I Learned
 
 > 기억을 다 못하겠으면 일단은 정리해서 적어보자...!
 >
