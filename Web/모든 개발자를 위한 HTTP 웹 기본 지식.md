@@ -68,7 +68,7 @@
 
 #### HTTP: HyperText Transfer Protocol
 
- 기본적으로 HTML 메시지와 Text 전송을 기반으로 했으며, 현재는 이미지, 음성, 영상, 파일 등의 거의 모든 형태의 데이터를 전송하는 것이 가능해졌다. 서버간의 데이터 송수신에서도 대부분 HTTP를 사용한다.
+ HTTP 초기에는 HTML 메시지와 Text 전송을 기반으로 제작되었으며, 현재는 이미지, 음성, 영상, 파일 등의 거의 모든 형태의 데이터를 전송하는 것이 가능해졌다. 서버간의 데이터 송수신에서도 대부분 HTTP를 사용한다.
 
 HTTP/1.1에서 현재의 기능을 거의 대부분 갖춰서 이를 주로 사용하고 있으며, HTTP/2와 HTTP/3의 사용 비율도 점차 증가하고 있다.
 
@@ -235,28 +235,40 @@ PUT 메서드는 '덮어씌우기'라고도 표현할 수 있으며, 전송한 �
 
 #### 정적 데이터 조회
 
-`https://www.example.com/main.html`
-
-
-
-`GET /main.html HTTP/1.1`
-
-`HOST: www.example.com`
+<img src="../resources/http_cts_case1.jpeg" width="40%" height="40%"/>
 
 정적 데이터는 다른 입력없이 항상 동일하며 조회시에 GET과 리소스 Path만 가지고 조회를 한다. 정적 텍스트와 이미지가 주로 그 대상이다.
 
 #### 동적 데이터 조회
 
-`https://www.example.com/member?id=1234/`
-
-
-
-`GET /member?id=1234 HTTP/1.1`
-
-`HOST: www.example.com`
+<img src="../resources/http_cts_case2.jpeg" width="50%" height="50%"/>
 
 동적 데이터는 검색이나 조회 시에 조건을 제시함으로써 요청의 결과가 변화할 수 있는 것을 의미한다. 조회시에 GET을 사용하며 데이터는 Query parameter에 담아서 전달한다.
 
 #### HTML Form을 통한 데이터 전송
 
-  
+##### Content type이 `x-www-form-urlencoded`일 경우
+
+| Method  |                      GET                      |                     POST                      |
+| :-----: | :-------------------------------------------: | :-------------------------------------------: |
+| Example | <img src="../resources/http_cts_case3.jpeg"/> | <img src="../resources/http_cts_case4.jpeg"/> |
+
+HTML Form에서 enctype을 지정하지 않으면 기본적으로 Content-Type이 `x-www-form-urlencoded`으로 지정된다. 전송될 데이터는 Message body에 담아지며, Query parameter와 같은 형태로 변환 후 url encoding되어 전송된다.
+
+> HTTP Form은 GET과 POST에서만 사용이 가능하며, GET으로는 조회 이외의 Safe한 특성을 해칠 수 있는 리소스 등록이나 변경을 수행하는 행위를 구현하지 않도록 주의해야한다.
+
+##### Content type이 `multipart/form-data`일 경우
+
+<img src="../resources/http_cts_case5.jpeg" width="60%" height="60%"/>
+
+HTML Form에서 enctype를 `multipart/form-data`로 설정하면 각각의 데이터가 boundary로 구분되어 분리된 형태로 Message body에 담아져서 전송된다. 파일과 같은 Binary 데이터를 전송할 때 사용되며, 종류가 다른 여러 파일을 함께 HTML Form으로 전송 할 수 있다. 참고로 마지막 boundary는 '--'가 추가적으로 붙어있다.
+
+#### HTTP API 데이터 전송
+
+<img src="../resources/http_cts_case6.jpeg" width="40%" height="40%"/>
+
+HTTP API는 서버 간의 통신, 모바일 앱 클라이언트와 서버의 통신, 웹 클라이언트와 HTML Form이 아닌 자바 스크립트를 사용한 통신(AJAX)에서 사용된다. 웹 클라이언트와 통신의 예로는 React, VuewJs와 같은 웹 클라이언트와의 API 통신이 있다.
+
+POST, PUT, PATCH는 Message body에 데이터를 담고, GET은 Query parameter로 데이터를 담는 것을 권장한다.
+
+Content type는 TEXT, XML, JSON등을 사용할 수 있으며, 현재는 JSON이 주로 사용된다.
