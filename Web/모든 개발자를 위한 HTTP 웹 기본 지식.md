@@ -13,6 +13,7 @@
 3. [HTTP 메서드](#3-HTTP-메서드)
 4. [HTTP 메서드 활용](#4-HTTP-메서드-활용)
 5. [HTTP 상태 코드](#5-HTTP-상태-코드)
+6. [HTTP 헤더](#6-HTTP-헤더)
 
 ----------
 
@@ -441,3 +442,45 @@ Location 헤더 필드를 통해 새롭게 받은 위치로 이동하는 것을 
 
 - 500 (Internal Server Error): 서버 문제로 인해 오류가 발생했음을 의미하며 포괄적인 문제상황을 뜻하기 때문에 다른 5XX 코드를 사용하기 어렵거나 애매한 경우에 일반적으로 사용한다.
 - 503 (Service Unavailable): 서버의 과부화나 예정된 작업으로 인해서 현재 요청을 수행할 수 없음을 의미한다. Retry-After 헤더 필드에 복구 예정 시간을 담아보내지만, 많은 경우에 예정 시간을 추측하기가 어려움으로 500을 대신 사용한다.
+
+-----
+
+### 6. HTTP 헤더
+
+ HTTP 헤더 필드는 ***필드 이름: 필드 값***과 같은 형태로 사용하며, 필드 이름은 대소문자를 구분하지 않는다.
+
+![HTTP 헤더](../resources/HTTP_Header.jpg)
+
+*출처:[위키피디아 URL](https://ko.wikipedia.org/wiki/HTTP)*
+
+ HTTP 전송에 필요한 모든 추가적인 정보를 전송할 때 사용되며, 표준 헤더가 많기 때문에 모든 필드를 암기하기는  어렵다. 필요하다면 임의로 새로운 헤더를 추가해서 사용하는 것도 가능하다.
+
+#### HTTP 헤더의 변화
+
+##### RFC2616 - Legacy
+
+###### 헤더 분류
+
+- General headers: 메시지 전체에 적용되는 정보
+- Request headers: 요청 정보
+- Response headers: 응답 정보
+- Entity headers: Entity body 정보
+
+###### Message body
+
+ Message body는 Entity body를 포함하여 이를 전달하는데 사용되며, Entity body는 전송시에 실제 데이터에 해당한다. Entity headers는 Entity body의 내용을 이해하기 위한 해석 정보를 전달한다.
+
+##### RFC723X (RFC7230 ~ 7235) - Now
+
+ Entity라는 개념 대신 표현(Representation)이라는 개념을 사용한다. 이는 리소스를 HTML, JSON등의 형태로 *표현*한다는 의미에서 기인한다.
+
+*Representation(표현) = Representation Metadata(표현 메타데이터) + Representation Data(표현 데이터)*
+
+Message body는 Representation Data를 포함하여 이를 전달하는데 사용되며, Payload라고도 불린다. Representation은 전송시에 실제 데이터에 해당하며 Representation headers는 이해하기 위한 해석 정보를 전달한다.
+
+#### Representation headers 예시
+
+- Content-Type: 표현 데이터의 형식, 즉 미디어 타입 및 문자 인코딩을 의미한다. (HTML, JSON 등)
+- Content-Encoding: 표현 데이터의 압축 형식을 의미한다. 송신측에서 압축, 수신측에서 압축 해제를 수행한다.
+- Content-Language: 표현 데이터의 자연 언어를 의미하며, 본문에서 사용되는 언어를 지정한다.
+- Content-Length: 표현 데이터의 길이를 의미한다. Byte 단위를 가지며 Transfer encoding (전송 인코딩)을 사용하면 Content-Length는 사용하지 않는다.
