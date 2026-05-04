@@ -11,6 +11,9 @@
 ### Data Structure
 - [Fenwick Tree](/Data%20Structure/Fenwick_Tree.md)
 
+### Git
+- [git 관리대상에서 제외하기](/Git/git_관리대상에서_제외하기.md)
+
 ### Linux
 
 - [SWAP 메모리 할당하기 - 클라우드 서비스의 인스턴스 프리즈 해결](/Linux/SWAP%20메모리%20할당하기%20-%20클라우드%20서비스의%20인스턴스%20프리즈%20해결.md)
