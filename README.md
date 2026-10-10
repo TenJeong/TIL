@@ -4,6 +4,9 @@
 >
 > 차곡차곡 쌓이면 언젠간 커질 거야
 
+# AI
+- [Machine learning 기초.md](/AI/Machine_learning_기초.md)
+
 ### Bootstrap
 
 - [Bootstrap 5.X 수평 방향 명칭 변화](/Bootstrap/Bootstrap%205.X%20수평%20방향%20명칭%20변화.md)
