@@ -6,7 +6,7 @@
 
 # AI
 - [Machine learning 기초.md](/AI/Machine_learning_기초.md)
-- [Deep learning 기초](/TIL/AI/Deep_learning_기초.md)
+- [Deep learning 기초](/AI/Deep_learning_기초.md)
 
 ### Bootstrap
 
